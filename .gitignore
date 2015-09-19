@@ -1,0 +1,6 @@
+target
+pom.xml.*
+release.properties
+.idea
+.DS_Store
+src/.DS_Store
