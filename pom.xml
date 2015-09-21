@@ -10,6 +10,8 @@
     <version>0.1</version>
     <modules>
         <module>slug-core</module>
+        <module>slug-web</module>
+        <module>slug-demo</module>
     </modules>
 
 
