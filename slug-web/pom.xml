@@ -12,6 +12,14 @@
     <artifactId>web</artifactId>
 
     <dependencies>
+
+        <dependency>
+            <groupId>com.slug</groupId>
+            <artifactId>slug-core</artifactId>
+            <version>0.1</version>
+        </dependency>
+
+
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>

@@ -18,11 +18,13 @@ import java.util.List;
 public class DispatcherServlet extends HttpServlet {
 
 
-//    private List<Handler> sysHandlers = new ArrayList<Handler>();
+    private List<Handler> sysHandlers = new ArrayList<Handler>();
 
 
     @Override
     public void init() throws ServletException {
+
+        //todo 添加默认的handler，后续可放在配置中
 
 
     }
