@@ -11,5 +11,4 @@ public interface Handler {
 
     public void handler(HttpServletRequest request, HttpServletResponse response) throws Exception;
 
-
 }
