@@ -9,7 +9,14 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>web</artifactId>
+    <artifactId>slug-web</artifactId>
+
+
+    <properties>
+        <junit.version>4.11</junit.version>
+    </properties>
+
+
 
     <dependencies>
 
@@ -17,6 +24,14 @@
             <groupId>com.slug</groupId>
             <artifactId>slug-core</artifactId>
             <version>0.1</version>
+        </dependency>
+
+        <!-- JUnit -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>provided</scope>
         </dependency>
 
 

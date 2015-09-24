@@ -27,6 +27,64 @@ public class ClassUtils {
 
         String classpath = "";
         URL resource = getClassLoader().getResource("");
-        return null;
+        if (resource != null) {
+            classpath = resource.getPath();
+        }
+        return classpath;
     }
+
+
+    /**
+     * 加载类(自动初始化)
+     *
+     * @param className
+     * @return
+     */
+    public static Class<?> loadClass(String className) {
+        return loadClass(className, true);
+    }
+
+
+    /**
+     * 加载类
+     *
+     * @param className
+     * @param isInitialized
+     * @return
+     */
+    public static Class<?> loadClass(String className, boolean isInitialized) {
+
+        Class<?> cls;
+
+        try {
+            cls = Class.forName(className, isInitialized, getClassLoader());
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+        return cls;
+
+    }
+
+
+    public static boolean isInt(Class<?> type) {
+
+        return type.equals(int.class) || type.equals(Integer.class);
+
+    }
+
+    public static boolean isLong(Class<?> type) {
+
+        return type.equals(long.class) || type.equals(Long.class);
+
+    }
+
+    public static boolean isDouble(Class<?> type) {
+        return type.equals(double.class) || type.equals(Double.class);
+    }
+
+    public static boolean isString(Class<?> type) {
+        return type.equals(String.class);
+    }
+
 }

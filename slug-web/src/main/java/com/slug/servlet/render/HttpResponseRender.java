@@ -1,6 +1,5 @@
 package com.slug.servlet.render;
 
-import com.slug.servlet.support.HttpRequestContext;
 
 import java.util.Map;
 
@@ -11,12 +10,12 @@ import java.util.Map;
 public interface HttpResponseRender {
 
 
-    public void preRender(HttpRequestContext context, Map<String, Object> args);
-
-
-    public void render(HttpRequestContext context);
-
-
-    public void postRender(HttpRequestContext context, Object ret);
+//    public void preRender(HttpRequestContext context, Map<String, Object> args);
+//
+//
+//    public void render(HttpRequestContext context);
+//
+//
+//    public void postRender(HttpRequestContext context, Object ret);
 
 }
