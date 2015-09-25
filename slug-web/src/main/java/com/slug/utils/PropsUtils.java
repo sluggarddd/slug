@@ -1,9 +1,7 @@
 package com.slug.utils;
 
 import java.io.InputStream;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Properties;
+import java.util.*;
 
 /**
  * properties file operate utils
@@ -29,7 +27,7 @@ public class PropsUtils {
         try {
 
             if (StringUtils.isEmpty(path)) {
-                //todo ¼ÇÂ¼logo
+                //todo  add log
                 throw new IllegalAccessException();
             }
 
@@ -44,7 +42,7 @@ public class PropsUtils {
                 properties.load(is);
             }
         } catch (Exception e) {
-            //todo ¼ÇÂ¼logo
+            //todo add log
             throw new RuntimeException(e);
         } finally {
             try {
@@ -52,7 +50,7 @@ public class PropsUtils {
                     is.close();
                 }
             } catch (Exception e) {
-                //todo ¼ÇÂ¼logo
+                //todo add log
             }
         }
 
@@ -71,6 +69,42 @@ public class PropsUtils {
         return map;
 
 
+    }
+
+
+    public static String getString(Properties properties, String key) {
+        String value = "";
+        if (properties.containsKey(key)) {
+            value = properties.getProperty(key);
+        }
+        return value;
+    }
+
+    public static String getString(Properties properties, String key, String defaultValue) {
+        String value = defaultValue;
+        if (properties.containsKey(key)) {
+            value = properties.getProperty(key);
+        }
+        return value;
+    }
+
+
+    public static Map<String, Object> getPropsMap(Properties properties, String prefix) {
+
+        Map<String, Object> propsMap = new LinkedHashMap<String, Object>();
+
+        Set<String> keySet = properties.stringPropertyNames();
+
+        if (CollectionUtils.isEmpty(keySet)) {
+            for (String key : keySet) {
+                if (key.startsWith(prefix)) {
+                    String value = properties.getProperty(key);
+                    propsMap.put(key, value);
+                }
+            }
+        }
+
+        return propsMap;
     }
 
 

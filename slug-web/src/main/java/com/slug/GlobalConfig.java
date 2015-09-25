@@ -8,4 +8,6 @@ public interface GlobalConfig {
 
     String CHARACTER_ENCODING = "UTF-8";
 
+    String CONFIG_PROPS = "slug.properties";
+
 }

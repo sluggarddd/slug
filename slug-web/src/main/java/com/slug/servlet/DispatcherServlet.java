@@ -1,6 +1,8 @@
 package com.slug.servlet;
 
+import com.slug.ApplicationContext;
 import com.slug.GlobalConfig;
+import com.slug.servlet.exception.DefaultHandlerMapping;
 import com.slug.servlet.handler.Handler;
 import com.slug.servlet.handler.HandlerMapping;
 
@@ -29,13 +31,17 @@ import java.util.List;
 @WebServlet(urlPatterns = "/*", loadOnStartup = 0)
 public class DispatcherServlet extends HttpServlet {
 
-    
+
+    private HandlerMapping handlerMapping = ApplicationContext.getHandlerMapping();
+
+
     @Override
     public void init(ServletConfig config) throws ServletException {
 
-        ServletContext servletContext = config.getServletContext();
+//        ServletContext servletContext = config.getServletContext();
 
     }
+
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -45,6 +51,8 @@ public class DispatcherServlet extends HttpServlet {
 
 
         //如果handlerMapping没有指定 则返回Index
+
+//        Hamal hamal = hand
 
 
     }
