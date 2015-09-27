@@ -1,5 +1,6 @@
 package com.slug.servlet;
 
+import com.slug.core.ClassHandler;
 import com.slug.utils.ClassUtils;
 
 import java.util.LinkedHashMap;
@@ -22,7 +23,7 @@ public class URIAdapter {
     static {
 
         //get the action now
-//        List<Class<?>> actionClassList = ClassUtils.
+//        List<Class<?>> actionClassList = ClassHandler
 
 
     }

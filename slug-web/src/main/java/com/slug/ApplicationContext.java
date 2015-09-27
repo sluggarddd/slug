@@ -1,6 +1,8 @@
 package com.slug;
 
+import com.slug.core.ClassScanner;
 import com.slug.core.ConfigHandler;
+import com.slug.core.scanner.DefaultClassScanner;
 import com.slug.servlet.exception.DefaultHandlerMapping;
 import com.slug.servlet.handler.HandlerMapping;
 import com.slug.utils.ObjectUtils;
@@ -18,7 +20,10 @@ public class ApplicationContext {
 
     private static final Map<String, Object> instances = new ConcurrentHashMap<String, Object>();
 
-    private static final String HANDLER_MAPPING = "com.slug.custom.handler_mapping";
+
+    private static final String HANDLER_MAPPING = "com.slug.HandlerMapping";
+
+    private static final String CLASS_SCANNER = "com.slug.ClassScanner";
 
     /**
      * get handler mapping
@@ -28,6 +33,12 @@ public class ApplicationContext {
     public static HandlerMapping getHandlerMapping() {
         return getInstance(HANDLER_MAPPING, DefaultHandlerMapping.class);
     }
+
+
+    public static ClassScanner getClassScanner() {
+        return getInstance(CLASS_SCANNER, DefaultClassScanner.class);
+    }
+
 
     public static <T> T getInstance(String key, Class<T> defaultImplClass) {
 

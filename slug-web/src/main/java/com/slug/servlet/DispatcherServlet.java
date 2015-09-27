@@ -2,20 +2,15 @@ package com.slug.servlet;
 
 import com.slug.ApplicationContext;
 import com.slug.GlobalConfig;
-import com.slug.servlet.exception.DefaultHandlerMapping;
-import com.slug.servlet.handler.Handler;
 import com.slug.servlet.handler.HandlerMapping;
 
 import javax.servlet.ServletConfig;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by zhw on 15/9/21.
