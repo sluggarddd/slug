@@ -1,5 +1,8 @@
 package com.slug.utils;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * @author zhw
  * @version 0.1  15/9/22
@@ -43,5 +46,22 @@ public class StringUtils {
 
         return true;
 
+    }
+
+
+    public static String replaceAll(String str, String regex, String replacement) {
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(str);
+        StringBuffer sb = new StringBuffer();
+        while (matcher.find()) {
+            matcher.appendReplacement(sb, replacement);
+        }
+        matcher.appendTail(sb);
+        return sb.toString();
+    }
+
+
+    public static String isEmpty(String str, String defaultValue) {
+        return isEmpty(str) ? defaultValue : str;
     }
 }

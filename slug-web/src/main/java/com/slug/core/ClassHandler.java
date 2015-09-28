@@ -1,6 +1,7 @@
 package com.slug.core;
 
 import com.slug.ApplicationContext;
+import com.slug.core.scanner.ClassScanner;
 
 import java.lang.annotation.Annotation;
 import java.util.List;
@@ -34,7 +35,7 @@ public class ClassHandler {
     }
 
     /**
-     * get assgin super class in base package
+     * get assign super class in base package
      *
      * @param superClass
      * @return

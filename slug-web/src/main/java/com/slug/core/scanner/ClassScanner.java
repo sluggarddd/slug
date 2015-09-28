@@ -1,4 +1,4 @@
-package com.slug.core;
+package com.slug.core.scanner;
 
 import java.lang.annotation.Annotation;
 import java.util.List;

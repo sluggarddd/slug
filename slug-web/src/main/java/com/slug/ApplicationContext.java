@@ -1,9 +1,10 @@
 package com.slug;
 
-import com.slug.core.ClassScanner;
+import com.slug.core.scanner.ClassScanner;
 import com.slug.core.ConfigHandler;
 import com.slug.core.scanner.DefaultClassScanner;
-import com.slug.servlet.exception.DefaultHandlerMapping;
+import com.slug.servlet.DefaultHandlerMapping;
+import com.slug.servlet.handler.HandlerInvoker;
 import com.slug.servlet.handler.HandlerMapping;
 import com.slug.utils.ObjectUtils;
 import com.slug.utils.StringUtils;
@@ -23,6 +24,8 @@ public class ApplicationContext {
 
     private static final String HANDLER_MAPPING = "com.slug.HandlerMapping";
 
+    private static final String HANDLER_INVOKER = "com.slug.HandlerInvoker";
+
     private static final String CLASS_SCANNER = "com.slug.ClassScanner";
 
     /**
@@ -32,6 +35,12 @@ public class ApplicationContext {
      */
     public static HandlerMapping getHandlerMapping() {
         return getInstance(HANDLER_MAPPING, DefaultHandlerMapping.class);
+    }
+
+
+    public static HandlerInvoker getHandlerInvoker() {
+//        return getInstance(HANDLER_INVOKER,);
+        return null;
     }
 
 

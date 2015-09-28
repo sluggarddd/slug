@@ -2,6 +2,8 @@ package com.slug.servlet;
 
 import com.slug.ApplicationContext;
 import com.slug.GlobalConfig;
+import com.slug.HttpSessionContext;
+import com.slug.servlet.handler.HandlerInvoker;
 import com.slug.servlet.handler.HandlerMapping;
 
 import javax.servlet.ServletConfig;
@@ -28,6 +30,7 @@ public class DispatcherServlet extends HttpServlet {
 
 
     private HandlerMapping handlerMapping = ApplicationContext.getHandlerMapping();
+//    private HandlerInvoker handlerInvoker = ApplicationContext.
 
 
     @Override
@@ -47,8 +50,21 @@ public class DispatcherServlet extends HttpServlet {
 
         //如果handlerMapping没有指定 则返回Index
 
-//        Hamal hamal = hand
+        try {
 
+            Hamal hamal = handlerMapping.getHamal(req);
+
+            if (hamal == null) {
+                //todo return error
+                return;
+            }
+
+            HttpSessionContext.init(req, resp);
+
+
+        } catch (Exception e) {
+            //todo deal with error
+        }
 
     }
 

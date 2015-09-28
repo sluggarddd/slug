@@ -1,7 +1,8 @@
 package com.slug.core.scanner;
 
-import com.slug.core.ClassScanner;
-import com.slug.utils.ClassUtils;
+import com.slug.core.scanner.template.AnnotationClassTemplate;
+import com.slug.core.scanner.template.ClassTemplate;
+import com.slug.core.scanner.template.SupperClassTemplate;
 
 import java.lang.annotation.Annotation;
 import java.util.List;
@@ -31,15 +32,26 @@ public class DefaultClassScanner implements ClassScanner {
 
     @Override
     public List<Class<?>> getClassListByAnnotation(String packageName, Class<? extends Annotation> annotationClass) {
-        return null;
+        return new AnnotationClassTemplate(packageName, annotationClass) {
+            @Override
+            public boolean checkAddClass(Class<?> cls) {
+                return cls.isAnnotationPresent(annotationClass);
+            }
+        }.getClassList();
     }
+
 
     @Override
     public List<Class<?>> getClassListBySuper(String packageName, Class<?> superClass) {
-        return null;
+        return new SupperClassTemplate(packageName, superClass) {
+
+
+            @Override
+            public boolean checkAddClass(Class<?> cls) {
+                return superClass.isAssignableFrom(cls) && !superClass.equals(cls);
+            }
+        }.getClassList();
     }
 
-    public static void main(String[] args) {
-        System.out.println(DefaultClassScanner.class.getName());
-    }
+
 }

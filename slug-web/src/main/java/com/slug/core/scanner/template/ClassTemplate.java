@@ -1,4 +1,4 @@
-package com.slug.core.scanner;
+package com.slug.core.scanner.template;
 
 import com.slug.utils.ClassUtils;
 import com.slug.utils.StringUtils;

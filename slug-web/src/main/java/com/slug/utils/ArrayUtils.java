@@ -1,0 +1,12 @@
+package com.slug.utils;
+
+/**
+ * @author zhw
+ * @version 0.1  15/9/28
+ */
+public class ArrayUtils {
+
+    public static boolean isEmpty(Object[] array) {
+        return array == null || array.length == 0;
+    }
+}
