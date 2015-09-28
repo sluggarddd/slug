@@ -4,8 +4,10 @@ import com.slug.core.scanner.ClassScanner;
 import com.slug.core.ConfigHandler;
 import com.slug.core.scanner.DefaultClassScanner;
 import com.slug.servlet.DefaultHandlerMapping;
+import com.slug.servlet.DefaultViewResolver;
 import com.slug.servlet.handler.HandlerInvoker;
 import com.slug.servlet.handler.HandlerMapping;
+import com.slug.servlet.render.ViewResolver;
 import com.slug.utils.ObjectUtils;
 import com.slug.utils.StringUtils;
 
@@ -28,6 +30,8 @@ public class ApplicationContext {
 
     private static final String CLASS_SCANNER = "com.slug.ClassScanner";
 
+    private static final String VIEW_RESOLVER = "com.slug.ViewResolver";
+
     /**
      * get handler mapping
      *
@@ -43,6 +47,15 @@ public class ApplicationContext {
         return null;
     }
 
+
+    /**
+     * get ViewResolver
+     *
+     * @return
+     */
+    public static ViewResolver getViewResolver() {
+        return getInstance(VIEW_RESOLVER, DefaultViewResolver.class);
+    }
 
     public static ClassScanner getClassScanner() {
         return getInstance(CLASS_SCANNER, DefaultClassScanner.class);
