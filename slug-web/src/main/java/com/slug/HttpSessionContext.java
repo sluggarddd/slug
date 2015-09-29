@@ -27,5 +27,8 @@ public class HttpSessionContext {
     }
 
 
+    public static void destroy() {
+        contextContainer.remove();
+    }
 
 }

@@ -9,6 +9,11 @@ import java.util.regex.Pattern;
  */
 public class StringUtils {
 
+    /**
+     * String separator
+     */
+    public static final String SEPARATOR = String.valueOf((char) 29);
+
 
     /**
      * Check the String is empty or not

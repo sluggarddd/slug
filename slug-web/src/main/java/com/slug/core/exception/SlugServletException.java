@@ -1,4 +1,4 @@
-package com.slug.servlet.exception;
+package com.slug.core.exception;
 
 import javax.servlet.ServletException;
 

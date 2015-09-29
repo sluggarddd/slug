@@ -3,6 +3,7 @@ package com.slug.servlet;
 import com.slug.ApplicationContext;
 import com.slug.GlobalConfig;
 import com.slug.HttpSessionContext;
+import com.slug.servlet.handler.HandlerException;
 import com.slug.servlet.handler.HandlerInvoker;
 import com.slug.servlet.handler.HandlerMapping;
 
@@ -30,7 +31,8 @@ public class DispatcherServlet extends HttpServlet {
 
 
     private HandlerMapping handlerMapping = ApplicationContext.getHandlerMapping();
-//    private HandlerInvoker handlerInvoker = ApplicationContext.
+    private HandlerInvoker handlerInvoker = ApplicationContext.getHandlerInvoker();
+    private HandlerException handlerException = ApplicationContext.getHandlerException();
 
 
     @Override
@@ -61,9 +63,14 @@ public class DispatcherServlet extends HttpServlet {
 
             HttpSessionContext.init(req, resp);
 
+            handlerInvoker.invokeHandler(req, resp, hamal);
+
 
         } catch (Exception e) {
             //todo deal with error
+            handlerException.handleException(req, resp, e);
+        } finally {
+            HttpSessionContext.destroy();
         }
 
     }

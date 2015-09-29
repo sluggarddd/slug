@@ -3,8 +3,11 @@ package com.slug;
 import com.slug.core.scanner.ClassScanner;
 import com.slug.core.ConfigHandler;
 import com.slug.core.scanner.DefaultClassScanner;
+import com.slug.servlet.DefaultHandlerException;
+import com.slug.servlet.DefaultHandlerInvoker;
 import com.slug.servlet.DefaultHandlerMapping;
 import com.slug.servlet.DefaultViewResolver;
+import com.slug.servlet.handler.HandlerException;
 import com.slug.servlet.handler.HandlerInvoker;
 import com.slug.servlet.handler.HandlerMapping;
 import com.slug.servlet.render.ViewResolver;
@@ -32,6 +35,8 @@ public class ApplicationContext {
 
     private static final String VIEW_RESOLVER = "com.slug.ViewResolver";
 
+    private static final String HANDLER_EXCEPTION = "com.slug.HandlerException";
+
     /**
      * get handler mapping
      *
@@ -43,8 +48,11 @@ public class ApplicationContext {
 
 
     public static HandlerInvoker getHandlerInvoker() {
-//        return getInstance(HANDLER_INVOKER,);
-        return null;
+        return getInstance(HANDLER_INVOKER, DefaultHandlerInvoker.class);
+    }
+
+    public static HandlerException getHandlerException() {
+        return getInstance(HANDLER_EXCEPTION, DefaultHandlerException.class);
     }
 
 

@@ -16,7 +16,7 @@ public class ClassHandler {
 
 
     //get base package
-    private static final String basePackage = ConfigHandler.getString("com.slug.app.base_package");
+    private static final String basePackage = ConfigHandler.getString("com.slug.scan.package");
 
 
     /**
