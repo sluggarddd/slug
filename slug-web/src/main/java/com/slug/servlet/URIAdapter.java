@@ -1,6 +1,7 @@
 package com.slug.servlet;
 
 import com.slug.core.ClassHandler;
+import com.slug.servlet.annotation.Controller;
 import com.slug.servlet.annotation.RequestMapping;
 import com.slug.servlet.handler.HandlerMapping;
 import com.slug.utils.ArrayUtils;
@@ -29,7 +30,7 @@ public class URIAdapter {
 
     static {
 
-        List<Class<?>> controllerClassList = ClassHandler.getClassListByAnnotation(RequestMapping.class);
+        List<Class<?>> controllerClassList = ClassHandler.getClassListByAnnotation(Controller.class);
 
 
         //get the action now

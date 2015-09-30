@@ -67,6 +67,7 @@ public class DispatcherServlet extends HttpServlet {
 
 
         } catch (Exception e) {
+            e.printStackTrace();
             //todo deal with error
             handlerException.handleException(req, resp, e);
         } finally {

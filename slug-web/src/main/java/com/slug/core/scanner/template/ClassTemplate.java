@@ -93,8 +93,8 @@ public abstract class ClassTemplate {
 
         // obtain the class in package path
         File[] files = new File(packagePath).listFiles(new FileFilter() {
-            public boolean accept(File pathname) {
-                return false;
+            public boolean accept(File file) {
+                return (file.isFile() && file.getName().endsWith(".class")) || file.isDirectory();
             }
         });
 
@@ -103,7 +103,7 @@ public abstract class ClassTemplate {
             String fileName = file.getName();
             if (file.isFile()) {
                 // obtain the classname
-                String className = fileName.substring(0, fileName.lastIndexOf(','));
+                String className = fileName.substring(0, fileName.lastIndexOf('.'));
                 if (!StringUtils.isEmpty(packageName)) {
                     className = packageName + "." + className;
                 }

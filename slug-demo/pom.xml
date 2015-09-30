@@ -27,7 +27,7 @@
 
         <dependency>
             <groupId>com.slug</groupId>
-            <artifactId>web</artifactId>
+            <artifactId>slug-web</artifactId>
             <version>0.1</version>
         </dependency>
 
