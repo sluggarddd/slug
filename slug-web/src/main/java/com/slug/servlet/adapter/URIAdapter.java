@@ -1,6 +1,8 @@
-package com.slug.servlet;
+package com.slug.servlet.adapter;
 
 import com.slug.core.ClassHandler;
+import com.slug.servlet.Hamal;
+import com.slug.servlet.Requester;
 import com.slug.servlet.annotation.Controller;
 import com.slug.servlet.annotation.RequestMapping;
 import com.slug.servlet.handler.HandlerMapping;

@@ -1,7 +1,6 @@
 package com.slug.servlet;
 
-import com.slug.servlet.Hamal;
-import com.slug.servlet.Requester;
+import com.slug.servlet.adapter.URIAdapter;
 import com.slug.servlet.handler.HandlerMapping;
 import com.slug.utils.WebUtils;
 

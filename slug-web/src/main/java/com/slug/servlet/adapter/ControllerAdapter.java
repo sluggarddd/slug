@@ -1,4 +1,4 @@
-package com.slug.core.bean;
+package com.slug.servlet.adapter;
 
 import com.slug.core.ClassHandler;
 import com.slug.servlet.annotation.Controller;
@@ -12,7 +12,7 @@ import java.util.Map;
  * @author zhw
  * @version 0.1  15/9/29
  */
-public class BeanFactory {
+public class ControllerAdapter {
 
 
     private static final Map<Class<?>, Object> beanMap = new HashMap<Class<?>, Object>();

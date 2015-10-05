@@ -56,8 +56,9 @@ public class DispatcherServlet extends HttpServlet {
 
             Hamal hamal = handlerMapping.getHamal(req);
 
+
             if (hamal == null) {
-                //todo return error
+                //todo return 404 NOT FOUND
                 return;
             }
 
