@@ -35,7 +35,7 @@ public class ClassUtils {
 
 
     /**
-     * 加载类(自动初始化)
+     * load class with class name
      *
      * @param className
      * @return
@@ -46,7 +46,7 @@ public class ClassUtils {
 
 
     /**
-     * 加载类
+     * load class with class name and decide whether to init
      *
      * @param className
      * @param isInitialized
