@@ -40,6 +40,7 @@ public class BeanAdaptor {
 
                     //todo is necessary to use Bean<Class<?>,Object>instead of  Map<String, Object> serviceMap
 
+                    //todo when the interface of service has the same simple name it will fail to implement
                     //the front will be override by the following class with the same key
                     serviceMap.put(cls.getAnnotation(Service.class).value().toLowerCase(), instance);
                 }
