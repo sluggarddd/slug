@@ -2,7 +2,8 @@ package com.slug.ioc;
 
 import com.slug.core.ClassHandler;
 import com.slug.core.exception.InitializationError;
-import com.slug.ioc.annotation.Service;
+import com.slug.ioc.annotation.Inject;
+import com.slug.servlet.annotation.Controller;
 
 import java.util.HashMap;
 import java.util.List;
@@ -10,6 +11,9 @@ import java.util.Map;
 
 /**
  * adaptor for bean in order to init bean
+ * <p>
+ * when the bean has the annotation inject
+ * means that it need to inject a implement
  *
  * @author zhw
  * @version 0.1  15/10/4
@@ -21,28 +25,27 @@ public class BeanAdaptor {
      */
     private static final Map<Class<?>, Object> beanMap = new HashMap<Class<?>, Object>();
 
-    private static final Map<String, Object> serviceMap = new HashMap<String, Object>();
-
+    //todo 依赖注入中 如何注入的问题还是没解决，无法识别哪些类里面包含了标签
     static {
         try {
             //get all class
             List<Class<?>> classList = ClassHandler.getClassList();
             for (Class<?> cls : classList) {
                 // get the class with assigned annotation
-                if (cls.isAnnotationPresent(Service.class)) {
+                if (cls.isAnnotationPresent(Inject.class) ||
+                        cls.isAnnotationPresent(Controller.class)) {
+                    Object instance = null;
+                    try {
+                        // build bean
+                        instance = cls.getAnnotation(Inject.class).value().newInstance();
+                    } catch (Exception e) {
+                        throw new InitializationError("class " + cls.toString() + " is unable to init", e);
+                    }
 
-                    // build bean
-                    Object instance = cls.newInstance();
 
                     // put class in Bean Map
                     beanMap.put(cls, instance);
 
-
-                    //todo is necessary to use Bean<Class<?>,Object>instead of  Map<String, Object> serviceMap
-
-                    //todo when the interface of service has the same simple name it will fail to implement
-                    //the front will be override by the following class with the same key
-                    serviceMap.put(cls.getAnnotation(Service.class).value().toLowerCase(), instance);
                 }
             }
         } catch (Exception e) {
@@ -87,11 +90,4 @@ public class BeanAdaptor {
     }
 
 
-    public static <T> T getBean(String key) {
-
-        if (!serviceMap.containsKey(key)) {
-            throw new RuntimeException(" can not get instance of class" + key);
-        }
-        return (T) serviceMap.get(key);
-    }
 }

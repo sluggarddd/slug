@@ -67,7 +67,7 @@ public class IOCAdaptor {
 
     private static Class<?> findImplInstance(Class<?> ifClass) {
         //it must be declare in service Annotation
-        return BeanAdaptor.getBean(ifClass.getSimpleName().toLowerCase());
+        return BeanAdaptor.getBean(ifClass.getClass());
     }
 
 

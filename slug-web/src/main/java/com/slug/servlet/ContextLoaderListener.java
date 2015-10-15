@@ -1,8 +1,11 @@
 package com.slug.servlet;
 
+import com.slug.AdaptorContainer;
+
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
+import javax.servlet.annotation.WebListener;
 import java.util.List;
 
 /**
@@ -11,6 +14,7 @@ import java.util.List;
  * @author zhw
  * @version 0.1  15/10/4
  */
+@WebListener
 public class ContextLoaderListener implements ServletContextListener {
 
     @Override
@@ -19,7 +23,8 @@ public class ContextLoaderListener implements ServletContextListener {
 
         ServletContext servletContext = sce.getServletContext();
 
-
+        //init adaptor
+        AdaptorContainer.init();
         //register plugins
 
 

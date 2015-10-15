@@ -19,11 +19,6 @@
         </dependency>
 
 
-        <dependency>
-            <groupId>com.slug</groupId>
-            <artifactId>slug-core</artifactId>
-            <version>0.1</version>
-        </dependency>
 
         <dependency>
             <groupId>com.slug</groupId>
