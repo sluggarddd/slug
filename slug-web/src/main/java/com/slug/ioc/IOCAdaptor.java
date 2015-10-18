@@ -58,16 +58,17 @@ public class IOCAdaptor {
             }
         } catch (Exception e) {
             //todo add log
-            throw new InitializationError("initing IocHelper error！", e);
+            throw new InitializationError("Init IocHelper error！", e);
         }
 
 
     }
 
 
-    private static Class<?> findImplInstance(Class<?> ifClass) {
+    private static Object findImplInstance(Class<?> ifClass) {
         //it must be declare in service Annotation
-        return BeanAdaptor.getBean(ifClass.getClass());
+
+        return BeanAdaptor.getBeanMap().get(ifClass);
     }
 
 

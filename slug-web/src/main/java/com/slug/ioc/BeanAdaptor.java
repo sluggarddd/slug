@@ -25,7 +25,6 @@ public class BeanAdaptor {
      */
     private static final Map<Class<?>, Object> beanMap = new HashMap<Class<?>, Object>();
 
-    //todo 依赖注入中 如何注入的问题还是没解决，无法识别哪些类里面包含了标签
     static {
         try {
             //get all class
@@ -34,10 +33,17 @@ public class BeanAdaptor {
                 // get the class with assigned annotation
                 if (cls.isAnnotationPresent(Inject.class) ||
                         cls.isAnnotationPresent(Controller.class)) {
+
                     Object instance = null;
                     try {
                         // build bean
-                        instance = cls.getAnnotation(Inject.class).value().newInstance();
+                        if (cls.isAnnotationPresent(Inject.class)) {
+                            instance = cls.getAnnotation(Inject.class).value().newInstance();
+                        } else {
+                            instance = cls.newInstance();
+                        }
+
+
                     } catch (Exception e) {
                         throw new InitializationError("class " + cls.toString() + " is unable to init", e);
                     }

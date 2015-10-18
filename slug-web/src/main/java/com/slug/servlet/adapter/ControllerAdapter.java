@@ -15,6 +15,8 @@ import java.util.Map;
 public class ControllerAdapter {
 
 
+    //todo !!!!!!!!!!is the same with BeanAdaptor !!!!!!!! you should delete one of them
+
     private static final Map<Class<?>, Object> beanMap = new HashMap<Class<?>, Object>();
 
     static {
