@@ -1,7 +1,7 @@
 package com.slug.servlet;
 
 import com.slug.ApplicationContext;
-import com.slug.servlet.adapter.ControllerAdapter;
+import com.slug.ioc.BeanAdaptor;
 import com.slug.servlet.bean.Params;
 import com.slug.servlet.handler.HandlerInvoker;
 import com.slug.servlet.render.ViewResolver;
@@ -37,7 +37,7 @@ public class DefaultHandlerInvoker implements HandlerInvoker {
         Method mappingMethod = hamal.getMappingMethod();
 
         //create controller
-        Object controllerInstance = ControllerAdapter.getBean(mappingClass);
+        Object controllerInstance = BeanAdaptor.getBean(mappingClass);
 
         //create action param List
         List<Object> paramList = createParamListInMethod(request, hamal);
