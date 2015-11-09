@@ -69,4 +69,35 @@ public class StringUtils {
     public static String isEmpty(String str, String defaultValue) {
         return isEmpty(str) ? defaultValue : str;
     }
+
+
+    /**
+     * transfer camel hump to underline
+     *
+     * @param str
+     * @return
+     */
+    public static String camelHumpToUnderline(String str) {
+
+        Matcher matcher = Pattern.compile("[A-Z]").matcher(str);
+        StringBuilder builder = new StringBuilder(str);
+        for (int i = 0; matcher.find(); i++) {
+            System.out.println(matcher.start());
+            System.out.println(matcher.end());
+            builder.replace(matcher.start() + i, matcher.end() + i, "_" + matcher.group().toLowerCase());
+        }
+
+        if (builder.charAt(0) == '_') {
+            builder.deleteCharAt(0);
+        }
+
+        return builder.toString();
+
+    }
+
+
+//    public static void main(String[] args) {
+//        System.out.println(camelHumpToUnderline("CardStation"));
+//    }
+
 }

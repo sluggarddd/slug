@@ -1,6 +1,6 @@
 package com.slug.servlet;
 
-import com.slug.servlet.adapter.URIAdapter;
+import com.slug.servlet.adapter.URIAdaptor;
 import com.slug.servlet.handler.HandlerMapping;
 import com.slug.utils.WebUtils;
 
@@ -22,7 +22,7 @@ public class DefaultHandlerMapping implements HandlerMapping {
 
         Hamal hamal = null;
 
-        Map<Requester, Hamal> controllerMap = URIAdapter.getControllerMap();
+        Map<Requester, Hamal> controllerMap = URIAdaptor.getControllerMap();
 
         for (Map.Entry<Requester, Hamal> entry : controllerMap.entrySet()) {
             //get request from Requester

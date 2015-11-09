@@ -21,7 +21,7 @@ import java.util.Map;
  * @author zhw
  * @version 0.1  15/9/25
  */
-public class URIAdapter {
+public class URIAdaptor {
 
 
     /**
