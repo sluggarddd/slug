@@ -12,6 +12,9 @@ public interface GlobalConfig {
 
     String CONFIG_PROPS = "slug.properties";
 
+    String SQL_PROPS = "slug-sql.properties";
+
+
     String VIEW_PATH = ConfigHandler.getString("com.slug.view.path", "/WEB-INF/");
 
 }

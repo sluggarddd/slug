@@ -3,6 +3,8 @@ package com.slug;
 import com.slug.core.scanner.ClassScanner;
 import com.slug.core.ConfigHandler;
 import com.slug.core.scanner.DefaultClassScanner;
+import com.slug.datasource.DataSourceFactory;
+import com.slug.datasource.impl.DefaultDataSourceFactory;
 import com.slug.servlet.DefaultHandlerException;
 import com.slug.servlet.DefaultHandlerInvoker;
 import com.slug.servlet.DefaultHandlerMapping;
@@ -38,6 +40,11 @@ public class ApplicationContext {
     private static final String HANDLER_EXCEPTION = "com.slug.HandlerException";
 
     /**
+     * DataSourceFactory
+     */
+    private static final String DS_FACTORY = "com.slug.dataSourceFactory";
+
+    /**
      * get handler mapping
      *
      * @return
@@ -69,6 +76,10 @@ public class ApplicationContext {
         return getInstance(CLASS_SCANNER, DefaultClassScanner.class);
     }
 
+
+    public static DataSourceFactory getDataSourceFactory() {
+        return getInstance(DS_FACTORY, DefaultDataSourceFactory.class);
+    }
 
     public static <T> T getInstance(String key, Class<T> defaultImplClass) {
 
