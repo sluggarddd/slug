@@ -146,7 +146,7 @@ public class SqlAdaptor {
         String table = getTable(entityClass);
         String where = generateWhere(condition);
         String order = generateOrder(sort);
-        String dbType = DatabaseHelper.getDatabaseType();
+        String dbType = DatabaseHandler.getDatabaseType();
         if (dbType.equalsIgnoreCase("mysql")) {
             int pageStart = (pageNumber - 1) * pageSize;
             appendSqlForMySql(sql, table, where, order, pageStart, pageSize);
@@ -181,6 +181,49 @@ public class SqlAdaptor {
             order += " order by " + sort;
         }
         return order;
+    }
+
+
+    private static void appendSqlForMySql(StringBuilder sql, String table, String where, String order, int pageStart, int pageEnd) {
+        /*
+            select * from 表名 where 条件 order by 排序 limit 开始位置, 结束位置
+         */
+        sql.append("select * from ").append(table);
+        sql.append(where);
+        sql.append(order);
+        sql.append(" limit ").append(pageStart).append(", ").append(pageEnd);
+    }
+
+    private static void appendSqlForOracle(StringBuilder sql, String table, String where, String order, int pageStart, int pageEnd) {
+        /*
+            select a.* from (
+                select rownum rn, t.* from 表名 t where 条件 order by 排序
+            ) a
+            where a.rn >= 开始位置 and a.rn < 结束位置
+        */
+        sql.append("select a.* from (select rownum rn, t.* from ").append(table).append(" t");
+        sql.append(where);
+        sql.append(order);
+        sql.append(") a where a.rn >= ").append(pageStart).append(" and a.rn < ").append(pageEnd);
+    }
+
+
+    private static void appendSqlForMsSql(StringBuilder sql, String table, String where, String order, int pageStart, int pageEnd) {
+        /*
+            select top 结束位置 * from 表名 where 条件 and id not in (
+                select top 开始位置 id from 表名 where 条件 order by 排序
+            ) order by 排序
+        */
+        sql.append("select top ").append(pageEnd).append(" * from ").append(table);
+        if (!StringUtils.isEmpty(where)) {
+            sql.append(where).append(" and ");
+        } else {
+            sql.append(" where ");
+        }
+        sql.append("id not in (select top ").append(pageStart).append(" id from ").append(table);
+        sql.append(where);
+        sql.append(order);
+        sql.append(") ").append(order);
     }
 
 

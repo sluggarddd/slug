@@ -3,6 +3,8 @@ package com.slug;
 import com.slug.core.scanner.ClassScanner;
 import com.slug.core.ConfigHandler;
 import com.slug.core.scanner.DefaultClassScanner;
+import com.slug.dao.DataAccessor;
+import com.slug.dao.impl.DefaultDataAccessor;
 import com.slug.datasource.DataSourceFactory;
 import com.slug.datasource.impl.DefaultDataSourceFactory;
 import com.slug.servlet.DefaultHandlerException;
@@ -38,6 +40,8 @@ public class ApplicationContext {
     private static final String VIEW_RESOLVER = "com.slug.ViewResolver";
 
     private static final String HANDLER_EXCEPTION = "com.slug.HandlerException";
+
+    private static final String DATA_ACCESSOR = "com.slug.dataAccessor";
 
     /**
      * DataSourceFactory
@@ -76,6 +80,9 @@ public class ApplicationContext {
         return getInstance(CLASS_SCANNER, DefaultClassScanner.class);
     }
 
+    public static DataAccessor getDataAccessor() {
+        return getInstance(DATA_ACCESSOR, DefaultDataAccessor.class);
+    }
 
     public static DataSourceFactory getDataSourceFactory() {
         return getInstance(DS_FACTORY, DefaultDataSourceFactory.class);
