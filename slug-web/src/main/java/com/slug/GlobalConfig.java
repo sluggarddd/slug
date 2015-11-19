@@ -14,6 +14,8 @@ public interface GlobalConfig {
 
     String SQL_PROPS = "slug-sql.properties";
 
+    String PK_NAME = "id";
+
 
     String VIEW_PATH = ConfigHandler.getString("com.slug.view.path", "/WEB-INF/");
 
