@@ -17,6 +17,7 @@ public class TestServiceImpl implements TestService {
     @Override
     public void test() throws Exception {
         List<UserBean> dataList = DataSet.selectListWithCondition(UserBean.class, null, null);
+
         System.out.println(dataList.size());
         for (UserBean userBean : dataList) {
             System.out.println(userBean.getUsername());
